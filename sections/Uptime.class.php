@@ -40,7 +40,7 @@ class Uptime {
 			$line = shell_exec("sysctl -n kern.boottime 2>/dev/null");
 			$arr = explode(" ", $line);
 			// $arr[3] still has trailing "," but this works
-			$boottime = $arr[3];
+			$boottime = rtrim($arr[3], ',');
 			$secs = time() - $boottime;
 		} else {
 			$uptime = file_get_contents("/proc/uptime");
